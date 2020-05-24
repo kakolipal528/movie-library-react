@@ -1,7 +1,8 @@
 import * as TYPES from './types';
 import tmdbAPI from '../api/tmdb';
 import history from '../history';
-
+import'bootstrap/dist/css/bootstrap.min.css';
+import'bootstrap/dist/js/bootstrap.bundle.min';
 // When app inits
 export const init = () => async dispatch => {
   dispatch({ type: TYPES.SET_LOADING });

@@ -182,6 +182,7 @@ const MovieItem = ({ movie, baseUrl }) => {
         />
         <DetailsWrapper>
           <Title>{movie.title}</Title>
+         
           <RatingsWrapper>
             <Rating number={movie.vote_average / 2} />
             <Tooltip>

@@ -9,6 +9,7 @@ import history from '../history';
 import LazyLoad from 'react-lazyload';
 import ModalVideo from 'react-modal-video';
 import { Element, animateScroll as scroll } from 'react-scroll';
+import './Movie.scss'
 
 import {
   getMovie,
@@ -25,6 +26,54 @@ import MoviesList from '../components/MoviesList';
 import Button from '../components/Button';
 import NothingSvg from '../svg/nothing.svg';
 import Loading from '../components/Loading';
+
+
+
+function Example() {
+ 
+
+  return (
+    <>
+     <p align="left"  > <button class="learn-more"   data-toggle="modal" data-target="#myModal"><h3>DOwNLOAD</h3></button></p>
+
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+      <div class="modal-header">
+       
+        <h3 class="modal-title">Modal Header</h3>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+    </>
+  );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const Wrapper = styled.div`
   display: flex;
@@ -308,7 +357,12 @@ const Movie = ({
     <Wrapper>
       <Helmet>
         <title>{`${movie.title} - Movie Library`}</title>
+       
       </Helmet>
+
+      
+      <Example/>
+      
       <LazyLoad height={500}>
         <MovieWrapper>
           {!loaded ? (
