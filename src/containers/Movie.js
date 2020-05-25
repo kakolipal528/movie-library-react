@@ -334,7 +334,7 @@ const Movie = ({
       </Helmet>
 
       
-      <Ex title = {movie.title}/>
+      <Ex title = {movie.title + " "+ movie.release_date  }/>
       
       <LazyLoad height={500}>
         <MovieWrapper>
