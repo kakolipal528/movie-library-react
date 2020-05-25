@@ -26,6 +26,7 @@ import MoviesList from '../components/MoviesList';
 import Button from '../components/Button';
 import NothingSvg from '../svg/nothing.svg';
 import Loading from '../components/Loading';
+import Pirate from './pirate';
 
 
 
@@ -34,23 +35,23 @@ function Example() {
 
   return (
     <>
-     <p align="left"  > <button class="learn-more"   data-toggle="modal" data-target="#myModal"><h3>DOwNLOAD</h3></button></p>
+     <p align="left"  > <button className="learn-more"   data-toggle="modal" data-target="#myModal"><h3>DOwNLOAD</h3></button></p>
 
 
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+<div id="myModal" className="modal fade" role="dialog">
+  <div className="modal-dialog">
 
-    <div class="modal-content">
-      <div class="modal-header">
+    <div className="modal-content">
+      <div className="modal-header">
        
-        <h3 class="modal-title">Modal Header</h3>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h3 className="modal-title">Modal Header</h3>
+        <button type="button" className="close" data-dismiss="modal">&times;</button>
       </div>
-      <div class="modal-body">
-        <p>Some text in the modal.</p>
+      <div className="modal-body">
+        <Pirate></Pirate>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      <div className="modal-footer">
+        <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
 
