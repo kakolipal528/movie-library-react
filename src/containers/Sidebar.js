@@ -101,23 +101,7 @@ const Sidebar = ({ genres, staticCategories, selected }) => {
         {renderStatic(staticCategories, selected)}
         <Heading>Genres</Heading>
         {renderGenres(genres, selected)}
-        <StyledCoffe
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.buymeacoffee.com/fidalgodev"
-        >
-          <img
-            src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg"
-            alt="Buy me a coffee"
-          />
-          <span style={{ marginLeft: '5px' }}>Buy me a coffee</span>
-        </StyledCoffe>
-        <CopyRight>
-          Copyright ©
-          <StyledLink href="https://www.github.com/fidalgodev">
-            Fidalgo
-          </StyledLink>
-        </CopyRight>
+        
         <Svg
           src={`${TmdbLogo}`}
           alt="The Movie Database"
