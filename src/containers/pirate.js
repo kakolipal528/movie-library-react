@@ -54,7 +54,7 @@ class Pirate extends React.Component {
             outer:
             for(var as=0;as<a.length;as++)
             {
-              console.log(a[as].className);
+             
               if(a[as].className =="detLink")
               {
               s2 = a[as].innerHTML;
@@ -75,7 +75,7 @@ class Pirate extends React.Component {
 
            // var s1 = decodeURI(s.substring(s.indexOf('&dn=')+4).substring(0,s.indexOf(';')));
            // eslint-disable-next-line
-            this.state.final.push(<li><button class = {s5} style={{whiteSpace: "normal",overflowWrap : "break-word",overflow : "visible", height :"100px"}} onClick={()=> window.open(s, "_blank")}><h2>{s2+"  "+d}</h2></button><br></br></li>)
+            this.state.final.push(<li><button className = {s5} style={{whiteSpace: "normal",overflowWrap : "break-word",overflow : "visible", height :"100px"}} onClick={()=> window.open(s, "_blank")}><h2>{s2+"  "+d}</h2></button><br></br></li>)
             this.setState({
                final: this.state.final
               });
