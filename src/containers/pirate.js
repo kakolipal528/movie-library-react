@@ -30,6 +30,23 @@ class Pirate extends React.Component {
         {
             var s = persons[i]["magnetLink"];
             var s1 = persons[i]["doc"];
+            var s4 = persons[i]["seeder"];
+            var s5 = "btn btn-primary btn-lg btn-block";
+            if(s4>50)
+            {
+                s5 = "btn btn-success btn-lg btn-block";
+            }
+            else
+            if(s4>10)
+            {
+                s5 ="btn btn-primary btn-lg btn-block";
+            }
+            else
+            if(s4<10)
+            {
+                s5 = "btn btn-secondary btn-lg btn-block";
+            }
+
             var s2 ="";
             var doc = new DOMParser().parseFromString(s1, "text/html");
             var a =doc.getElementsByTagName('a');
@@ -58,7 +75,7 @@ class Pirate extends React.Component {
 
            // var s1 = decodeURI(s.substring(s.indexOf('&dn=')+4).substring(0,s.indexOf(';')));
            // eslint-disable-next-line
-            this.state.final.push(<li><button class = "btn btn-primary btn-lg btn-block" style={{whiteSpace: "normal",overflowWrap : "break-word",overflow : "visible", height :"100px"}} onClick={()=> window.open(s, "_blank")}><h2>{s2+"\n"+d}</h2></button><br></br></li>)
+            this.state.final.push(<li><button class = {s5} style={{whiteSpace: "normal",overflowWrap : "break-word",overflow : "visible", height :"100px"}} onClick={()=> window.open(s, "_blank")}><h2>{s2+"  "+d}</h2></button><br></br></li>)
             this.setState({
                final: this.state.final
               });
