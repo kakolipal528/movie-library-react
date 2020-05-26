@@ -1,0 +1,74 @@
+
+button {
+    -webkit-appearance: none;
+    cursor: pointer;
+    *overflow: visible;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    padding: 0;
+  }
+  
+  .cta {
+    height: 85px;
+      width: 300px;
+    position: relative;
+    top: 5em;
+    cursor: pointer;
+  }
+  .path0 {
+    fill: transparent;
+    stroke-dasharray: 100 1100;
+    stroke-dashoffset: -662;
+    stroke-width: 2px;
+    stroke-linecap: "round";
+    stroke-linejoin: "round";
+    stroke: #10d43a;
+  }
+  .path1 {
+    fill: transparent;
+    stroke-dasharray: 100 1100;
+    stroke-dashoffset: -662;
+    stroke-width: 2px;
+    stroke-linecap: "round";
+    stroke-linejoin: "round";
+    stroke: #112ca3;
+  }
+  .path2 {
+    fill: transparent;
+    stroke-dasharray: 100 1100;
+    stroke-dashoffset: -662;
+    stroke-width: 2px;
+    stroke-linecap: "round";
+    stroke-linejoin: "round";
+    stroke: grey;
+  }
+  .cta-copy {
+    color: #b247b3;
+    font-family: 'Roboto Condensed';
+    font-size: 15px;
+    letter-spacing: 4px;
+    line-height: 1em;
+    position: relative;
+    top: -55px;
+      text-transform: uppercase;
+  }
+  .cta:hover .path0 {
+    animation: 0.5s outlineDraw ease-in forwards;
+  }
+  .cta:hover .path1 {
+    animation: 0.5s outlineDraw ease-in forwards;
+  }
+  .cta:hover .path2 {
+    animation: 0.5s outlineDraw ease-in forwards;
+  }
+  @keyframes outlineDraw {
+    0% {
+      stroke-dasharray: 100 1100;
+      stroke-dashoffset: -662;
+    }
+    100% {
+      stroke-dasharray: 1100;
+      stroke-dashoffset: 0;
+    }
+  }

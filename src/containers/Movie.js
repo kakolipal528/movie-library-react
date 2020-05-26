@@ -334,7 +334,7 @@ const Movie = ({
       </Helmet>
 
       
-      <Ex title = {movie.title + " "+ movie.release_date  }/>
+      
       
       <LazyLoad height={500}>
         <MovieWrapper>
@@ -399,7 +399,10 @@ const Movie = ({
             </ButtonsWrapper>
           </MovieDetails>
         </MovieWrapper>
+        <Ex title = {movie.title + " "+ movie.release_date  }/>
+        <br></br> <br></br> <br></br><br></br><br></br>
       </LazyLoad>
+
       <Header title="Recommended" subtitle="movies" />
       {renderRecommended(recommended, secure_base_url)}
     </Wrapper>
