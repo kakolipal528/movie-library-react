@@ -1,4 +1,4 @@
-import React from 'react';
+import React  from 'react';
 import './Button.scss'
 
 import axios from 'axios';
@@ -13,6 +13,7 @@ class Pirate extends React.Component {
         this.state = {
              
             final : []
+          
         };
       }
    
@@ -26,11 +27,17 @@ class Pirate extends React.Component {
         console.log(res)
         
         const persons = JSON.parse(JSON.stringify(res.data));
+        var dup = [];
        var l = persons.length;
        var i=0;
         for(i=0;i< l;i++)
         {
-            var s = persons[i]["magnetLink"];
+            var sa = persons[i]["magnetLink"];
+            if(dup.includes(sa))
+            continue;
+            else
+            dup.push(sa);
+           
             var s1 = persons[i]["doc"];
             var s4 = persons[i]["seeder"];
             var s5 = "btn btn-primary btn-lg btn-block";
@@ -66,6 +73,7 @@ class Pirate extends React.Component {
               break outer;
               }
             }
+         
             if(s2.includes('2160'))
             {
               s6 = '4k';
@@ -97,13 +105,10 @@ class Pirate extends React.Component {
             d = d.substring(0,d.indexOf(','));
            // var s1 = decodeURI(s.substring(s.indexOf('&dn=')+4).substring(0,s.indexOf(';')));
            // eslint-disable-next-line
+           console.log(sa);
             this.state.final.push(
-
-
-
-
-
-<button class="cta"  onClick={()=> window.open(s, "_blank")}>
+              <a href = {sa}>
+<button class="cta"  >
   <svg 
   xmlns="http://www.w3.org/2000/svg"
 	width="300px" height="85px" 
@@ -116,21 +121,7 @@ class Pirate extends React.Component {
   </svg>
   <span class="cta-copy"><img src={require(`../svg/${s6}.png`)} height="30px" width="30px"/> {d} </span>
 </button>
-
-
-
-
-
-
-               
-               
-
-
-
-
-
-
-
+</a>
                 
                 
                 )
