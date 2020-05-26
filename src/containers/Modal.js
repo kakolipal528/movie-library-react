@@ -5,13 +5,13 @@ import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 function Example(props) {
     const [show, setShow] = useState(false);
-    const [a,seta] = useState(<Pirate title = {props.title}/>);
+    
   
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     return (
       <>
-        <div hidden>{a}</div>
+        
        
         <p align="left"  > <button className="learn-more" onClick={handleShow}  ><h3>DOwNLOAD</h3></button></p>
   
@@ -19,7 +19,7 @@ function Example(props) {
           <Modal.Header >
             <Modal.Title><h1 align = "center">LIST OF LINKS</h1></Modal.Title>
           </Modal.Header>
-    <Modal.Body><h1> {a} </h1></Modal.Body>
+    <Modal.Body><h1>  <Pirate title = {props.title}/> </h1></Modal.Body>
           <Modal.Footer>
             <Button variant="primary" onClick={handleClose}>
               Close
