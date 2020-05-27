@@ -9,6 +9,7 @@ import history from '../history';
 import LazyLoad from 'react-lazyload';
 import ModalVideo from 'react-modal-video';
 import { Element, animateScroll as scroll } from 'react-scroll';
+import axios from 'axios'
 
 
 import {
@@ -27,9 +28,6 @@ import Button from '../components/Button';
 import NothingSvg from '../svg/nothing.svg';
 import Loading from '../components/Loading';
 import Ex from './Modal'
-
-
-
 
 
 
@@ -259,6 +257,14 @@ const ButtonsWrapper = styled.div`
   }
 `;
 
+
+
+
+
+
+
+
+
 const LeftButtons = styled.div`
   margin-right: auto;
   display: flex;
@@ -280,6 +286,8 @@ const AWrapper = styled.a`
   text-decoration: none;
 `;
 
+
+
 //Movie Component
 const Movie = ({
   location,
@@ -291,6 +299,7 @@ const Movie = ({
   recommended,
   getRecommendations,
   clearRecommendations,
+  
 }) => {
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState(false);
@@ -343,8 +352,10 @@ const Movie = ({
               <Loading />
             </ImgLoading>
           ) : null}
+          
           <ImageWrapper style={!loaded ? { display: 'none' } : {}}>
-            <MovieImg
+           
+            <MovieImg    onClick = {() => displaySite(movie)}
               error={error ? 1 : 0}
               src={`${secure_base_url}w780${movie.poster_path}`}
               onLoad={() => setLoaded(true)}
@@ -358,6 +369,7 @@ const Movie = ({
               }}
             />
           </ImageWrapper>
+         
           <MovieDetails>
             <HeaderWrapper>
               <Header size="2" title={movie.title} subtitle={movie.tagline} />
@@ -532,6 +544,46 @@ const mapStateToProps = ({ movie, geral, recommended }) => ({
   geral,
   recommended,
 });
+
+const displaySite = (movie) =>
+{
+ 
+  var t1 = movie.release_date
+  var s = "https://blooming-savannah-85314.herokuapp.com/?val="+movie.title + " "+ t1.substring(0,t1.indexOf('-'))+'.';
+  console.log(s)
+    axios.get(s)
+      .then(res => {
+        var a =new DOMParser().parseFromString(res.data.body, "text/html") ;
+   var b = a.getElementsByTagName('a');
+   var l5 = b.length;
+   var uflink = "";
+   var link = "";
+   
+   slpq:
+   for(var lp = 0;lp<l5;lp++)
+   {
+  
+    var a =(b[lp].href).toString();
+    if(a.includes("q=https://en.wikipedia.org/wiki"))
+    {
+    uflink = a;
+    break;
+   }
+    }
+    if(uflink !="")
+    {
+      link = uflink.substring(uflink.indexOf('q=https://en.wikipedia.org/wiki'))
+      link = link.substring(2,link.indexOf('&sa'))
+      window.location.href = link;
+
+    }
+
+   }
+      )
+
+  
+  
+      }
 
 export default connect(
   mapStateToProps,
