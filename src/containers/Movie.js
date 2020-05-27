@@ -302,11 +302,12 @@ const Movie = ({
   
 }) => {
   const [loaded, setLoaded] = useState(false);
+ 
   const [error, setError] = useState(false);
   const [modalOpened, setmodalOpened] = useState(false);
   const { secure_base_url } = geral.base.images;
   const params = queryString.parse(location.search);
-
+const [k,setk] = useState(false);
   // Fetch movie id when id on the url changes
   useEffect(() => {
     scroll.scrollToTop({
@@ -336,7 +337,20 @@ const Movie = ({
   }
 
   return (
+
+
+
     <Wrapper>
+      
+    
+      {k?(
+        <div class="alert alert-primary" role="alert">
+     <h2>   My nodejs scraper is hard at work scraping for a wikipedia link.Will redirect you soon.Thank you for being so lazy to not do it yourself.</h2>
+      </div>
+
+
+      ):null}
+      
       <Helmet>
         <title>{`${movie.title} - Movie Library`}</title>
        
@@ -355,7 +369,8 @@ const Movie = ({
           
           <ImageWrapper style={!loaded ? { display: 'none' } : {}}>
            
-            <MovieImg    onClick = {() => displaySite(movie)}
+            <MovieImg   data-toggle="tooltip" title="open wikipedia"  onClick = {() => {displaySite(movie);setk(!k);}} 
+            
               error={error ? 1 : 0}
               src={`${secure_base_url}w780${movie.poster_path}`}
               onLoad={() => setLoaded(true)}
@@ -547,6 +562,7 @@ const mapStateToProps = ({ movie, geral, recommended }) => ({
 
 const displaySite = (movie) =>
 {
+  
  
   var t1 = movie.release_date
   var s = "https://blooming-savannah-85314.herokuapp.com/?val="+movie.title + " "+ t1.substring(0,t1.indexOf('-'))+'.';
