@@ -301,6 +301,52 @@ const Movie = ({
   clearRecommendations,
   
 }) => {
+
+  var link = "";
+var loadLink = (movie) => {
+  var t1 = movie.release_date;
+  console.log(t1);
+  
+  var s = "https://blooming-savannah-85314.herokuapp.com/?val="+movie.title + " "+ t1.substring(0,t1.indexOf('-'))+'.';
+  console.log(s)
+    axios.get(s)
+      .then(res => {
+        var a =new DOMParser().parseFromString(res.data.body, "text/html") ;
+   var b = a.getElementsByTagName('a');
+   var l5 = b.length;
+   var uflink = "";
+   
+   
+   slpq:
+   for(var lp = 0;lp<l5;lp++)
+   {
+  
+    var a =(b[lp].href).toString();
+    if(a.includes("q=https://en.wikipedia.org/wiki"))
+    {
+    uflink = a;
+    break;
+   }
+    }
+    if(uflink !="")
+    {
+      link = uflink.substring(uflink.indexOf('q=https://en.wikipedia.org/wiki'))
+      link = link.substring(2,link.indexOf('&sa'))
+     
+  
+    }
+  
+   }
+      )
+  
+
+
+  }
+
+
+
+
+
   const [loaded, setLoaded] = useState(false);
  
   const [error, setError] = useState(false);
@@ -326,7 +372,7 @@ const [k,setk] = useState(false);
     getRecommendations(match.params.id, params.page);
     return () => clearRecommendations();
   }, [params.page]);
-
+var fcn1
   // If loading
   if (movie.loading) {
     return <Loader />;
@@ -336,6 +382,7 @@ const [k,setk] = useState(false);
     history.push(process.env.PUBLIC_URL + '/404');
   }
 
+  loadLink(movie);
   return (
 
 
@@ -345,11 +392,14 @@ const [k,setk] = useState(false);
     
       {k?(
         <div class="alert alert-primary" role="alert">
-     <h2>   My nodejs scraper is hard at work scraping for a wikipedia link.Will redirect you soon.Thank you for being so lazy to not do it yourself.</h2>
+     <h2>   My nodejs scraper is hard at work scraping for a wikipedia link.Will redirect you soon.Thank you for being so lazy to not do it yourself.
+       
+     </h2>
       </div>
 
 
       ):null}
+
       
       <Helmet>
         <title>{`${movie.title} - Movie Library`}</title>
@@ -369,7 +419,17 @@ const [k,setk] = useState(false);
           
           <ImageWrapper style={!loaded ? { display: 'none' } : {}}>
            
-            <MovieImg   data-toggle="tooltip" title="open wikipedia"  onClick = {() => {displaySite(movie);setk(!k);}} 
+            <MovieImg   data-toggle="tooltip" title="open wikipedia"  onClick = {fcn1=() => {console.log(link); 
+            if(link!="")
+            window.location.href = link;
+          else
+          {
+            setk(true);
+            console.log(k);
+            setTimeout(fcn1, 1000);
+
+          }
+          }} 
             
               error={error ? 1 : 0}
               src={`${secure_base_url}w780${movie.poster_path}`}
