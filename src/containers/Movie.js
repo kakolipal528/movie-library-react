@@ -34,18 +34,6 @@ import Ex from './Modal'
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 const Wrapper = styled.div`
   display: flex;
   width: 100%;
@@ -421,7 +409,10 @@ var fcn1
            
             <MovieImg   data-toggle="tooltip" title="open wikipedia"  onClick = {fcn1=() => {console.log(link); 
             if(link!="")
+            {
+              link = decodeURI(link);
             window.location.href = link;
+            }
           else
           {
             setk(true);
@@ -620,46 +611,8 @@ const mapStateToProps = ({ movie, geral, recommended }) => ({
   recommended,
 });
 
-const displaySite = (movie) =>
-{
-  
- 
-  var t1 = movie.release_date
-  var s = "https://blooming-savannah-85314.herokuapp.com/?val="+movie.title + " "+ t1.substring(0,t1.indexOf('-'))+'.';
-  console.log(s)
-    axios.get(s)
-      .then(res => {
-        var a =new DOMParser().parseFromString(res.data.body, "text/html") ;
-   var b = a.getElementsByTagName('a');
-   var l5 = b.length;
-   var uflink = "";
-   var link = "";
-   
-   slpq:
-   for(var lp = 0;lp<l5;lp++)
-   {
-  
-    var a =(b[lp].href).toString();
-    if(a.includes("q=https://en.wikipedia.org/wiki"))
-    {
-    uflink = a;
-    break;
-   }
-    }
-    if(uflink !="")
-    {
-      link = uflink.substring(uflink.indexOf('q=https://en.wikipedia.org/wiki'))
-      link = link.substring(2,link.indexOf('&sa'))
-      window.location.href = link;
-
-    }
-
-   }
-      )
 
   
-  
-      }
 
 export default connect(
   mapStateToProps,
