@@ -21,7 +21,7 @@ class Pirate extends React.Component {
 
 
   componentDidMount() {
-    var s = "https://cors-anywhere.herokuapp.com/https://morning-wave-44976.herokuapp.com/?val="+encodeURI(this.props.title);
+    var s = "https://cors-anywhere.herokuapp.com/https://boiling-mesa-38028.herokuapp.com/?val="+encodeURI(this.props.title);
     axios.get(s)
       .then(res => {
         console.log(res)
