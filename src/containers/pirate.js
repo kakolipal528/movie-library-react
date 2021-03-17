@@ -21,7 +21,8 @@ class Pirate extends React.Component {
 
 
   componentDidMount() {
-    var s = "https://cors-anywhere.herokuapp.com/https://boiling-mesa-38028.herokuapp.com/?val="+encodeURI(this.props.title);
+    // var s = "https://boiling-mesa-38028.herokuapp.com/?val="+encodeURI(this.props.title);
+    var s = "https://boiling-mesa-38028.herokuapp.com/?val="+encodeURI(this.props.title);
     axios.get(s)
       .then(res => {
         console.log(res)
@@ -62,7 +63,7 @@ class Pirate extends React.Component {
             var s2 ="";
             var doc = new DOMParser().parseFromString(s1, "text/html");
             var a =doc.getElementsByTagName('a');
-            var d = doc.getElementsByTagName('font')[0].innerText;
+            var d = doc.getElementsByTagName('font')[0].innerText; 
             outer:
             for(var as=0;as<a.length;as++)
             {
